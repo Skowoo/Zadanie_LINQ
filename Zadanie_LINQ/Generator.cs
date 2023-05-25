@@ -8,8 +8,6 @@ namespace Zadanie_LINQ
 {
     internal class Generator
     {
-
-
         public static IEnumerable<int> LiczbyCalkowiteNaprzemiennie(int n)
         {
             if (n < 0) throw new ArgumentOutOfRangeException("n");
@@ -26,7 +24,5 @@ namespace Zadanie_LINQ
 
             return list;
         }
-
-
     }
 }
