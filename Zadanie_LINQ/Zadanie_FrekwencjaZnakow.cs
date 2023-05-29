@@ -15,19 +15,22 @@ namespace Zadanie_LINQ
             int queryNumber = Int32.Parse(Console.ReadLine());
             if (queryNumber < 1 | queryNumber > 100) return;
 
-            BeginningOfSingleQuery:
+            StringBuilder outputString = new StringBuilder();
+
+        BeginningOfSingleQuery:
             queryNumber--;
 
+            //Input for single query
             char[] input = Console.ReadLine().ToLower().ToCharArray();
             if (input.Length > 1000) return;
 
-            string query = Console.ReadLine();
-
+            //Command array
+            string query = Console.ReadLine();            
             string[] queryArray = query.Split(' ');
 
+            //Main query (filling up the dictinary)
             var inputQuery = input
                 .Select(x => CountChars(x));
-
             foreach (var x in inputQuery) { } //Use query to fill the dictionary
 
             var outputQuery = existingChars.Select(x => x);
@@ -57,14 +60,16 @@ namespace Zadanie_LINQ
             if (queryArray[0] == "first")
                 outputQuery = outputQuery.Take(int.Parse(queryArray[1]));
             else
-                outputQuery = outputQuery.TakeLast(int.Parse(queryArray[1]));
-
+                outputQuery = outputQuery.TakeLast(int.Parse(queryArray[1]));            
 
             foreach (var x in outputQuery)
-                Console.WriteLine($"{x.Key} {x.Value}");
+                outputString.Append($"{x.Key} {x.Value}" + Environment.NewLine);
 
             existingChars.Clear();
+            outputString.Append(Environment.NewLine);
             if (queryNumber > 0) goto BeginningOfSingleQuery;
+
+            Console.WriteLine(outputString);
         }
 
         public static char CountChars(char input)
