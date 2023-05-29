@@ -30,26 +30,29 @@ namespace Zadanie_LINQ
 
             foreach (var x in inputQuery) { } //Use query to fill the dictionary
 
-            //foreach (var x in existingChars)
-            //    Console.WriteLine($"{x.Key} {x.Value}");
-
-
-
-            //first 3 byfreq asc byletter asc
-
             var outputQuery = existingChars.Select(x => x);
 
-            if (queryArray.Length == 4)
+            if (queryArray.Length == 6)
             {
-                if (queryArray[2] == "byfreq" && queryArray[3] == "asc")
+                if (queryArray[4] == "byfreq" && queryArray[5] == "asc")
                     outputQuery = outputQuery.OrderBy(x => x.Value);
-                else if (queryArray[2] == "byfreq" && queryArray[3] == "desc")
+                else if (queryArray[4] == "byfreq" && queryArray[5] == "desc")
                     outputQuery = outputQuery.OrderByDescending(x => x.Value);
-                else if (queryArray[2] == "byletter" && queryArray[3] == "asc")
+                else if (queryArray[4] == "byletter" && queryArray[5] == "asc")
                     outputQuery = outputQuery.OrderBy(x => x.Key);
-                else if (queryArray[2] == "byletter" && queryArray[3] == "desc")
+                else if (queryArray[4] == "byletter" && queryArray[5] == "desc")
                     outputQuery = outputQuery.OrderByDescending(x => x.Key);
             }
+
+            if (queryArray[2] == "byfreq" && queryArray[3] == "asc")
+                outputQuery = outputQuery.OrderBy(x => x.Value);
+            else if (queryArray[2] == "byfreq" && queryArray[3] == "desc")
+                outputQuery = outputQuery.OrderByDescending(x => x.Value);
+            else if (queryArray[2] == "byletter" && queryArray[3] == "asc")
+                outputQuery = outputQuery.OrderBy(x => x.Key);
+            else if (queryArray[2] == "byletter" && queryArray[3] == "desc")
+                outputQuery = outputQuery.OrderByDescending(x => x.Key);
+
 
             if (queryArray[0] == "first")
                 outputQuery = outputQuery.Take(int.Parse(queryArray[1]));
