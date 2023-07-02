@@ -10,7 +10,7 @@ namespace Zadanie_LINQ
     {
         public static Dictionary<char, int> existingChars = new Dictionary<char, int>();
 
-        public static void Main()
+        public static void offMain()
         {
             int queryNumber = Int32.Parse(Console.ReadLine());
             if (queryNumber < 1 | queryNumber > 100) return;
